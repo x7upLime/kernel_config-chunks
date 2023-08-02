@@ -10,4 +10,10 @@ KERNELDIR=/usr/src/linux
 CURR_DIR=$PWD
 
 cd $KERNELDIR
+## merge the specified .config
 ./scripts/kconfig/merge_config.sh -n .config "$CURR_DIR/$1"
+
+#### Just to keep in mind..
+## sets version/localversion
+# ./scripts/config --set-val CONFIG_CC_VERSION_TEXT ""
+# ./scripts/config --set-val CONFIG_LOCALVERSION ""
