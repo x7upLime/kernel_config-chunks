@@ -13,8 +13,22 @@ all the options involved, by logically separating them by purpose.
 Otherwise, from `make menuconfig` is just a big tangle of options.
 
 ## how to use this
-It all revolves around the ./scripts/kconfig/merge_config.sh script in the linux tree.
+It all revolves around the ./scripts/kconfig/merge_config.sh script in the linux tree.  
 See the x7merge_config.sh script
+
+What I usually do is start from a fresh .config in the linux tree:
+```bash
+cd /path/to/linux
+make allnoconfig
+```
+
+And then add the chunks with:
+```bash
+DIR=/path/to/repo/kernel_config-chunks
+./scripts/kconfig/merge_config.sh -n .config $DIR/this_chunk.config $DIR/this_other_cunk.config # and so on..
+```
+
+Then just `make install` and update bootloader
 
 #### why x7?
 I always keep the toplevel logic in .sh files prepended by "x7", so that I'll know for sure that those are
